@@ -38,7 +38,7 @@ class BinomialHeap(object):
             if self.root_list[i].degree != self.root_list[i+1].degree:
                 i += 1
             elif i+2 < len(self.root_list) and self.root_list[i].degree == self.root_list[i+2].degree:
-                i + 1
+                i += 1
             elif self.root_list[i].key <= self.root_list[i+1].key:
                 self.root_list[i].degree += 1
                 child = self.root_list[i].child
