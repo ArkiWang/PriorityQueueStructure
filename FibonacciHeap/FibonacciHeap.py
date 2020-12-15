@@ -1,7 +1,6 @@
-from numpy import argmin
-
-from Node import node
+from FibonacciHeap.Node import node
 class FibonacciHeap(object):
+
     def __init__(self, min=None, n=0, root_list=[]):
         self.min = min
         self.n = n
@@ -118,6 +117,11 @@ class FibonacciHeap(object):
                 union_list.append(h)
             new_root_list.extend(union_list)
         self.root_list = new_root_list
+
+
+
+
+
 
 
 

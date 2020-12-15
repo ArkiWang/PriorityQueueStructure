@@ -1,4 +1,6 @@
-from Node import node
+from cmath import inf
+
+from FibonacciHeap.Node import node
 class BinomialHeap(object):
     def __init__(self, n=0, k=-1, root_list=None, min=None):
         self.n = n#nodes
@@ -41,15 +43,49 @@ class BinomialHeap(object):
                 self.root_list[i].degree += 1
                 child = self.root_list[i].child
                 self.root_list[i].child = self.root_list[i+1]
+                self.root_list[i].child.parent = self.root_list[i]
                 self.root_list[i].child.sibling = child
                 self.root_list.__delitem__(i+1)
             else:
                 self.root_list[i + 1].degree += 1
                 child = self.root_list[i + 1].child
                 self.root_list[i + 1].child = self.root_list[i]
+                self.root_list[i + 1].child.parent = self.root_list[i + 1]
                 self.root_list[i + 1].child.sibling = child
                 self.root_list.__delitem__(i)
 
+    def find_min(self):
+        if self.root_list == None or self.n == 0:
+            return None
+        maxr = self.root_list[0]
+        for ri in self.root_list:
+            if maxr.key < ri.key:
+                maxr = ri
+        return maxr
+
+    def decrease_key(self, x: node, k: int):
+        x.key -= k
+        while x.parent != None and x.key < x.parent.key:
+            xk = x.key
+            x.key = x.parent.key
+            x.parent.key = xk
+            x = x.parent
+        if x.parent == None and x.key < self.min.key:
+            self.min = x
+
+    def delete_min(self):
+        self.root_list.remove(self.min)
+        child = self.min.child
+        self.root_list.append(child)
+        self.merge()
+        while child.sibling != None:
+            child = child.sibling
+            self.root_list.append(child)
+            self.merge()
+
+    def delete_key(self, x: node):
+        self.delete_key(x, inf)
+        self.delete_min()
 
 
 
