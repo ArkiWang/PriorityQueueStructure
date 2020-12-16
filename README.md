@@ -24,7 +24,4 @@ all the trees of same degree/order in Fibonacci Heap)**
 
 
     
-=======
- 
-# BinominalHeap
->>>>>>> 71fe595e4ee718927b8008c793c11439a2fed588
+
