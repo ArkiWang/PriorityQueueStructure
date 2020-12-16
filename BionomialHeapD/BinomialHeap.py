@@ -1,6 +1,6 @@
 from cmath import inf
 
-from FibonacciHeap.Node import node
+from BionomialHeapD.Node import node
 class BinomialHeap(object):
     def __init__(self, n=0, k=-1, root_list=None, min=None):
         self.n = n#nodes

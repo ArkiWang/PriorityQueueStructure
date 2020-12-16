@@ -1,4 +1,4 @@
-from BionomialHeap.BinomialHeap import BinomialHeap
+from BionomialHeapD.BinomialHeap import BinomialHeap
 import networkx as nx
 
 def createGraph():
